@@ -39,6 +39,44 @@ body, html {
     color: black;
   }
 
-  /* News */
+  /* Updates */
 
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+  }
   
+  .card {
+    margin: 1rem;
+    padding: 1rem;
+    max-width: 200px;
+    background: #1e1e1e;
+    border: 1px solid grey;
+    border-radius: 1rem;
+  }
+  
+  .loader {
+    border: 16px solid #1e1e1e;
+    border-top: 16px solid grey;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  .error {
+    border: 1px solid darkred;
+    padding: 1rem;
+    color: darkred;
+    font-weight: bolder;
+    background: grey;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
