@@ -1,33 +1,34 @@
-const url = "https://dog-breeds2.p.rapidapi.com/dog_breeds/"
+const url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry%2Ctype&input=Hospitals&inputtype=textquery&key=AIzaSyA1IreY-l6sSmT8anfkb_unOUtH2ym9NAM"
 
-// const proxy = "https://noroffcors.herokuapp.com/";
+const proxy = "https://noroffcors.herokuapp.com/";
 
-// const corsFix = proxy + url;
+const corsFix = proxy + url;
 
 const resultsContainer = document.querySelector(".results");
 
 
 async function callApi(){
     try {
-        const response = await fetch(url);
+        const response = await fetch(corsFix);
         const json = await response.json();
-        console.log(json);
-    //     // console.log(json.rawData);
-    //     // console.log(json.rawData.length);
-    //     var country = json.rawData;
-    //     for(let i = 0; i<country.length; i++){
-    
-    //         // if(!country[i].Country_Region || !country[i].Confirmed || !country[i].Deaths) {
-    //         //     console.log("continue")
-    //         //     continue;
-    //         // }
 
-    //         resultsContainer.innerHTML += `<div class="card">
-    //                                         <h4>${country[i].Country_Region}<h4>
-    //                                         <h4>${country[i].Confirmed}<h4>
-    //                                         <h4>${country[i].Deaths}<h4>
-    //                                         </div>`
-    //     }    
+        console.log(json);
+        console.log(json.candidates);
+        console.log(json.candidates.length);
+
+        var hospitals = json.candidates;
+
+        resultsContainer.innerHTML = "";
+        
+        for(let i = 0; i<hospitals.length; i++){
+
+            resultsContainer.innerHTML += `<div class="card">
+                                            <h2>${hospitals[i].name}<h4>
+                                            <h4>${hospitals[i].formatted_address}<h4>
+                                            <h4>${hospitals[i].rating}<h4>
+                                            </div>`
+        }   
+         
     } catch(error){
         console.log(error);
         resultsContainer.innerHTML = message("error", error);

@@ -50,7 +50,8 @@ body, html {
     margin: 1rem;
     padding: 1rem;
     max-width: 200px;
-    background: #1e1e1e;
+    background: #333;
+    color: lightgray;
     border: 1px solid grey;
     border-radius: 1rem;
   }
